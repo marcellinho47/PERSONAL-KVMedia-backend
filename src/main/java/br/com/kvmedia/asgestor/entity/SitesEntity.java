@@ -70,9 +70,8 @@ public class SitesEntity extends DefaultInclusion {
 		this.setInclusionDate(LocalDateTime.now());
 	}
 
-	public SitesEntity(Integer id, String name, String email, String message, LocalDateTime sendDate) {
+	public SitesEntity(String name, String email, String message, LocalDateTime sendDate) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.message = message;

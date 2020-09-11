@@ -8,7 +8,7 @@
 	<artifactId>kvmedia-backend</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
-	
+
 	<name>kvmedia</name>
 	<description>KV Media</description>
 
@@ -78,6 +78,19 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- Security - BEGIN
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency> -->
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		<!-- Security - END -->
 
 	</dependencies>
 

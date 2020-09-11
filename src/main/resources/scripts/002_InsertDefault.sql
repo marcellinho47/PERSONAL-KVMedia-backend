@@ -5841,6 +5841,17 @@ VALUES
 	('Rescindido');
 
 INSERT INTO
-	Operadores (FLAG_Admin, DESC_Login, DESC_Senha, ID_OperadorInclusao)
+	Operadores (FLAG_MasterAdmin, DESC_Login, DESC_Senha, ID_OperadorInclusao)
 VALUES
 	(1, 'system', '55799b3b151066dc2b10a4ccc46d147e4a601efa4295be8a1eaadaf5c4ace10c',  1);
+
+INSERT INTO 
+	Perfis
+VALUES
+	('ROLE_ADMIN'),
+	('ROLE_CLIENT');
+
+INSERT INTO 
+	OperadoresPerfis
+VALUES
+	(1, 1);
