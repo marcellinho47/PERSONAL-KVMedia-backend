@@ -1,3 +1,6 @@
+USE master
+GO
+
 CREATE DATABASE KVMEDIA COLLATE Latin1_General_CI_AI;
 
 /*

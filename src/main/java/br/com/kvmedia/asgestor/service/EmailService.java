@@ -8,6 +8,8 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
+import br.com.kvmedia.asgestor.entity.OperatorEntity;
+
 @Service
 public class EmailService {
 
@@ -39,4 +41,16 @@ public class EmailService {
 		mailSender.send(mail);
 	}
 
+	public void sendNewPassword(OperatorEntity operator, String newPassword) {
+
+		SimpleMailMessage mail = new SimpleMailMessage();
+
+		mail.setTo(operator.getLogin());
+		mail.setFrom(sender);
+		mail.setSubject("KV Media - Recuperação de Senha");
+		mail.setSentDate(new Date(System.currentTimeMillis()));
+		mail.setText("Sua nova senha é: " + newPassword);
+
+		mailSender.send(mail);
+	}
 }

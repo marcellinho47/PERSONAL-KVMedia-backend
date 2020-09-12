@@ -1,6 +1,8 @@
 package br.com.kvmedia.asgestor.entity;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,12 +12,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
 @Table(name = "Operadores")
-public class OperatorEntity extends DefaultInclusionExclusion {
+public class OperatorEntity extends DefaultInclusionExclusion implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,13 +34,14 @@ public class OperatorEntity extends DefaultInclusionExclusion {
 	@Column(nullable = false, name = "FLAG_MasterAdmin")
 	private Boolean flagMasterAdmin;
 
+	@Email(message = "E-mail inválido")
 	@NotNull(message = "Login é obrigatório")
-	@Size(min = 6, max = 20, message = "Tamanho inválido")
+	@Size(min = 5, max = 60, message = "Tamanho inválido")
 	@Column(nullable = false, name = "DESC_Login")
 	private String login;
 
 	@NotNull(message = "Senha Obrigatória")
-	@Size(min = 65, max = 65, message = "Tamanho inválido")
+	@Size(min = 60, max = 65, message = "Tamanho inválido")
 	@Column(nullable = false, name = "DESC_Senha")
 	private String password;
 
@@ -141,5 +149,42 @@ public class OperatorEntity extends DefaultInclusionExclusion {
 		} else if (!password.equals(other.password))
 			return false;
 		return true;
+	}
+
+	/* ====================================================================================== */
+	/* MÉTODOS AUXILIARES */
+	/* ====================================================================================== */
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return getAuthoritiesFromProfiles();
+	}
+
+	@Override
+	public String getUsername() {
+		return this.login;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return Boolean.TRUE;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return Boolean.TRUE;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return Boolean.TRUE;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return Boolean.TRUE;
+	}
+
+	private List<? extends GrantedAuthority> getAuthoritiesFromProfiles() {
+		return this.opProfiles.stream().map(perfil -> new SimpleGrantedAuthority(perfil.getProfile().getDescription())).collect(Collectors.toList());
 	}
 }

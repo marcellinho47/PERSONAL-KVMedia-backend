@@ -5843,7 +5843,7 @@ VALUES
 INSERT INTO
 	Operadores (FLAG_MasterAdmin, DESC_Login, DESC_Senha, ID_OperadorInclusao)
 VALUES
-	(1, 'system', '55799b3b151066dc2b10a4ccc46d147e4a601efa4295be8a1eaadaf5c4ace10c',  1);
+	(1, 'dev@kvmedia.com.br', '$2a$10$CXR6I7N9gYZgJSptA9lAD.KpF2GWg53LdKfBXdeJti6g32.Rmjg8q',  1);
 
 INSERT INTO 
 	Perfis
