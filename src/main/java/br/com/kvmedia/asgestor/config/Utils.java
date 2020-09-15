@@ -1,6 +1,9 @@
 package br.com.kvmedia.asgestor.config;
 
 public class Utils {
+	
+	public static final String PATH_EMAIL = "Emails/";
+	
 
 	// CPF
 	private static final int[] weightSsn = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
