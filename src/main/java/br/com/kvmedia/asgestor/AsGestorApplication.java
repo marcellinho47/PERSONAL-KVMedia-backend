@@ -22,6 +22,7 @@ public class AsGestorApplication extends SpringBootServletInitializer {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**").allowedOrigins("https://kvmedia.com.br");
+				registry.addMapping("/**").allowedOrigins("https://localhost");
 			}
 		};
 	}
