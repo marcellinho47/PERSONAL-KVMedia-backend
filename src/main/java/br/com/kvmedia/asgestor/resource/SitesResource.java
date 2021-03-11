@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.kvmedia.asgestor.entity.SitesEntity;
 import br.com.kvmedia.asgestor.service.SitesService;
 
+/**
+ * @author marcello.alves
+ * @since 28/11/2018
+ * 
+ * Classe que receberá as informações dos formulário de contato  
+ * 
+ * */
 @RestController
 @RequestMapping("/sites")
 public class SitesResource {
